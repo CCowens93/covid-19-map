@@ -19,11 +19,11 @@ export class MapContainer extends Component {
         <Switch>
       <Map
         google={this.props.google}
-        zoom={14}
+        zoom={10}
         style={mapStyles}
         initialCenter={{
-         lat: -1.2884,
-         lng: 36.8233
+         lat: 33.7490,
+         lng: -84.3880
         }}
       />
       </Switch>
