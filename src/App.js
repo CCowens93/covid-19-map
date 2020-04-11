@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 // import { Map, GoogleApiWrapper } from 'google-maps-react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-// import data from './components/covid-19-data'
-import stats from './components/data'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import Data from './components/data.js'
 
-// const mapStyles = {
-//   width: '50%',
-//   height: '50%'
-// };
+
 
 class MapContainer extends Component {
+
+  state = {
+    covidInfoArray: []
+  }
+
+  addInfo = (covidInfo) => {
+    this.setState(prevState => ({
+      covidInfoArray:[...prevState.covidInfoArray, covidInfo]
+    }))
+  }
   render() {
 
     
@@ -17,13 +23,31 @@ class MapContainer extends Component {
     return (
 
       <Router>
-        {/* <Switch>
-          <Route exact path ="/" component={data}/>
-        </Switch> */}
+      
         <Switch>
-          <Route path ="/" component={stats}/>
+            <Data  covidInfoArray={this.state.covidInfoArray.data}/>
         </Switch>
-        {/* <Switch>
+       
+      </Router>
+    );
+  }
+}
+
+export default MapContainer
+
+
+
+
+
+
+
+
+// const mapStyles = {
+//   width: '50%',
+//   height: '50%'
+// };
+
+ /* <Switch>
       <Map
         google={this.props.google}
         zoom={10}
@@ -33,15 +57,7 @@ class MapContainer extends Component {
          lng: -84.3880
         }}
       />
-      </Switch> */}
-      </Router>
-    );
-  }
-}
-
-export default MapContainer
-
-
+      </Switch> */
 // GoogleApiWrapper({
 //   apiKey: 'AIzaSyBUAZsqi06d5kyxtUUglOElnxuYqvg-mRU'
 // })(MapContainer);
