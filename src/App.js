@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+// import { Map, GoogleApiWrapper } from 'google-maps-react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import data from './components/covid-19-data'
+// import data from './components/covid-19-data'
+import stats from './components/data'
 
-const mapStyles = {
-  width: '50%',
-  height: '50%'
-};
+// const mapStyles = {
+//   width: '50%',
+//   height: '50%'
+// };
 
-export class MapContainer extends Component {
+class MapContainer extends Component {
   render() {
+
+    
+    
     return (
 
       <Router>
-        <Switch>
+        {/* <Switch>
           <Route exact path ="/" component={data}/>
-        </Switch>
+        </Switch> */}
         <Switch>
+          <Route path ="/" component={stats}/>
+        </Switch>
+        {/* <Switch>
       <Map
         google={this.props.google}
         zoom={10}
@@ -26,12 +33,15 @@ export class MapContainer extends Component {
          lng: -84.3880
         }}
       />
-      </Switch>
+      </Switch> */}
       </Router>
     );
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBUAZsqi06d5kyxtUUglOElnxuYqvg-mRU'
-})(MapContainer);
+export default MapContainer
+
+
+// GoogleApiWrapper({
+//   apiKey: 'AIzaSyBUAZsqi06d5kyxtUUglOElnxuYqvg-mRU'
+// })(MapContainer);
